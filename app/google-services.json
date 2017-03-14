@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "336599047442",
+    "firebase_url": "https://wescore-d34dd.firebaseio.com",
+    "project_id": "wescore-d34dd",
+    "storage_bucket": "wescore-d34dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336599047442:android:386818945e411cad",
+        "android_client_info": {
+          "package_name": "com.kartikeyashukla.qartks.wescore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336599047442-k466hipv5n0asj9g3iko11knh0la57hc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kartikeyashukla.qartks.wescore",
+            "certificate_hash": "fb448093ae7bc5e449012f3f3c6302372128f037"
+          }
+        },
+        {
+          "client_id": "336599047442-hejao4t4fun4gqfng5ebi2ub83mg3ide.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANQ8tfiSJ4peS9l4x93i0yy8YbyJrMBAk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336599047442-hejao4t4fun4gqfng5ebi2ub83mg3ide.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
