@@ -38,6 +38,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private long scoreAchieved;
     private long scoreGiven;
 
+    private String revonUID = "8unIHi8DlcUtoM53kYJhcghg5H03";
+    private String kartikeyaUID = "WrDf9k11KrQAEDfGJEPPDM6uCcF2";
+
+    private String partnerUID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         loggedInUser = fbAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         dbReference = database.getReference();
+
+        if (loggedInUser.getUid().equals(revonUID)) {
+            partnerUID = kartikeyaUID;
+        } else {
+            partnerUID = revonUID;
+        }
 
         profileLogOut = (Button) findViewById(R.id.profile_logout);
         profileEmail = (TextView) findViewById(R.id.profile_email);
@@ -110,10 +121,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     protected void onStart() {
         super.onStart();
 
-        dbReference.child(loggedInUser.getUid()).addValueEventListener(new ValueEventListener() {
+        dbReference.child(partnerUID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                scoreAchieved = (long) dataSnapshot.child("score").getValue();
+                scoreAchieved =  (dataSnapshot.child("score").getValue() == null ? 0L : (long) dataSnapshot.child("score").getValue() );
                 myScore.setText(String.valueOf(scoreAchieved));
             }
 
@@ -137,6 +148,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void submitYourScore() {
-        dbReference.child(loggedInUser.getUid()).child("score").setValue(scoreAchieved + scoreGiven);
+        dbReference.child(partnerUID).child("score").setValue(scoreAchieved + scoreGiven);
     }
 }
