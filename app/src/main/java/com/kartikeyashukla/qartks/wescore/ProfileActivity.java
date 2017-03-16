@@ -1,6 +1,9 @@
 package com.kartikeyashukla.qartks.wescore;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +21,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private String partnerUID;
 
+    private BroadcastReceiver broadcastReceiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };
+
+//        registerReceiver(broadcastReceiver, new IntentFilter(WS_FirebaseInstanceIdService.TOKEN_BROARDCAST));
+        SharedPrefManager sharedPref = SharedPrefManager.getInstance(this);
+
+        Log.i(TAG , FirebaseInstanceId.getInstance().getToken());
 
         loggedInUser = fbAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
